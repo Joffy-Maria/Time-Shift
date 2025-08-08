@@ -1,8 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&display=swap');
-
 /* TimeShift Design System - Futuristic Time Machine Theme */
 
 @layer base {
@@ -186,8 +185,4 @@
     font-size: clamp(1.5rem, 4vw, 3rem);
     line-height: 1.2;
   }
-}
-
-* {
-  border-color: hsl(var(--border));
 }
