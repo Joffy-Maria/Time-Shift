@@ -53,11 +53,12 @@ const Results = () => {
         "digital-leap": "Gutenberg's impossible digital printing press created an information explosion 500 years early. This led to rapid scientific advancement but also widespread misinformation and social chaos.",
         "mass-production": "Instant mass production of books created the world's first information overload crisis in the 1400s. Governments struggled to control information flow, leading to earlier democratic movements."
       },
-      "berlin-wall": {
-        "never-falls": "Germany remains permanently divided, with two distinct cultures evolving. The EU never forms as we know it, and the Cold War continues in a different form well into the 21st century.",
-        "earlier-fall": "Earlier reunification led to a more powerful Germany economically and politically. The EU formed earlier and differently, changing global trade patterns and geopolitics.",
-        "violent-fall": "The violent revolution created lasting instability in Europe. Germany struggled with internal conflicts for decades, delaying European integration and economic growth."
-      },
+      "newton-apple": {
+        "dies-before": "Isaac Newton dies young before formulating his laws of motion and gravity. Classical physics develops decades later, delaying the scientific revolution and industrial age.",
+        "never-happened": "The apple incident is apocryphal and never occurs. Newton still develops his theories through other observations, but public fascination with science evolves differently.",
+        "ignored-it": "Newton sees the apple fall but dismisses it. Gravity remains poorly understood for years, leaving space exploration and engineering advancements far behind schedule."
+    }
+,
       "electricity": {
         "prevent": "Humanity remained in a pre-electric world, relying on steam and mechanical power. The Industrial Revolution stalled, and modern technology as we know it never developed.",
         "ancient-discovery": "Ancient Egyptian electrical technology led to a completely different path of human development. Pyramid-powered cities and electromagnetic transportation reshaped all of human history.",
