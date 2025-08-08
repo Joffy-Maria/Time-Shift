@@ -57,6 +57,6 @@ Every choice builds an **alternate universe** with unpredictable, often hilariou
 - What if **slavery** was abolished in the 1500s?
 - What if **the internet** was invented in the 1800s?
 - What if **dinosaurs** never went extinct?
-- What if **Alexander the Great** lived to 100 years old?
+- What if **Alexander the Great** lived to 100 years old??
 
 ---
