@@ -1,0 +1,193 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&display=swap');
+
+/* TimeShift Design System - Futuristic Time Machine Theme */
+
+@layer base {
+  :root {
+    /* Core Colors - Dark Futuristic Theme */
+    --background: 240 33% 6%;  /* Deep space blue-black */
+    --foreground: 191 100% 95%; /* Bright cyan-white */
+
+    --card: 240 25% 8%; /* Slightly lighter dark blue */
+    --card-foreground: 191 100% 90%;
+
+    --popover: 240 30% 10%;
+    --popover-foreground: 191 100% 90%;
+
+    /* Neon Blue Primary */
+    --primary: 191 100% 50%; /* Electric cyan */
+    --primary-foreground: 240 33% 6%;
+    --primary-glow: 191 100% 60%;
+
+    /* Electric Purple Secondary */
+    --secondary: 258 90% 66%; /* Electric purple */
+    --secondary-foreground: 240 33% 6%;
+    --secondary-glow: 258 90% 76%;
+
+    /* Muted tones */
+    --muted: 240 20% 15%;
+    --muted-foreground: 191 30% 70%;
+
+    /* Accent - Purple variant */
+    --accent: 258 90% 66%;
+    --accent-foreground: 240 33% 6%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 191 100% 95%;
+
+    --border: 240 30% 18%;
+    --input: 240 30% 12%;
+    --ring: 191 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom Design System Tokens */
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--secondary-glow)));
+    --gradient-cosmic: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 50%, hsl(var(--primary)) 100%);
+    --gradient-dark: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(240 30% 8%) 100%);
+    
+    /* Shadows & Glows */
+    --shadow-neon: 0 0 20px hsl(var(--primary) / 0.3), 0 0 40px hsl(var(--primary) / 0.1);
+    --shadow-purple: 0 0 20px hsl(var(--secondary) / 0.3), 0 0 40px hsl(var(--secondary) / 0.1);
+    --shadow-cosmic: 0 0 30px hsl(var(--primary) / 0.2), 0 0 60px hsl(var(--secondary) / 0.1);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    font-family: 'Exo 2', system-ui, sans-serif;
+  }
+
+  /* Futuristic Typography */
+  .font-heading {
+    font-family: 'Orbitron', monospace;
+  }
+
+  .font-body {
+    font-family: 'Exo 2', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  /* Cinematic text effects */
+  .text-neon {
+    color: hsl(var(--primary));
+    text-shadow: 0 0 10px hsl(var(--primary) / 0.5);
+  }
+
+  .text-cosmic {
+    background: var(--gradient-cosmic);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+    animation: cosmic-flow 3s ease-in-out infinite;
+  }
+
+  /* Glowing container effects */
+  .glow-neon {
+    box-shadow: var(--shadow-neon);
+  }
+
+  .glow-purple {
+    box-shadow: var(--shadow-purple);
+  }
+
+  .glow-cosmic {
+    box-shadow: var(--shadow-cosmic);
+  }
+
+  /* Background patterns */
+  .bg-cosmic {
+    background: var(--gradient-cosmic);
+  }
+
+  .bg-dark-grid {
+    background-image: 
+      linear-gradient(rgba(0, 212, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 212, 255, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  /* Animation classes */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-cosmic-flow {
+    animation: cosmic-flow 3s ease-in-out infinite;
+  }
+}
+
+@layer utilities {
+  /* Custom animation keyframes */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+
+  @keyframes cosmic-flow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  /* Responsive text sizes */
+  .text-hero {
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    line-height: 1.1;
+  }
+
+  .text-title {
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    line-height: 1.2;
+  }
+}
+
+* {
+  border-color: hsl(var(--border));
+}

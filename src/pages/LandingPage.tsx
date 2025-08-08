@@ -65,4 +65,20 @@ const LandingPage = () => {
           >
             Begin Time Travel
           </TimeShiftButton>
+
+          {/* Bottom Text */}
+          <p className="text-sm text-muted-foreground/60 mt-8 font-body">
+            Warning: Temporal alterations may have unexpected consequences
+          </p>
+        </div>
+
+        {/* Scanning Lines Effect */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="h-full w-full bg-gradient-to-b from-transparent via-primary/5 to-transparent animate-pulse-slow" />
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export default LandingPage;
