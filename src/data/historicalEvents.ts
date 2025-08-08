@@ -2,7 +2,8 @@ import { HistoricalEvent, Alteration } from "@/types/events";
 import moonLandingImg from "@/assets/moon-landing.jpg";
 import lightBulbImg from "@/assets/light-bulb.jpg";
 import printingPressImg from "@/assets/printing-press.jpg";
-
+import newtonAppleImg from "@/assets/newtonapple.jpg";
+import electricityImg from "@/assets/electricityimg.jpg";
 export const historicalEvents: HistoricalEvent[] = [
   {
     id: "moon-landing",
@@ -29,19 +30,19 @@ export const historicalEvents: HistoricalEvent[] = [
     category: "technology"
   },
   {
-    id: "berlin-wall",
-    title: "Fall of Berlin Wall",
-    year: 1989,
-    description: "The Berlin Wall falls, symbolizing the end of the Cold War and German reunification.",
-    image: "/api/placeholder/400/300",
-    category: "politics"
+  "id": "newton-apple",
+  "title": "Newton Dies Before Apple Falls",
+  "year": 1665,
+  "description": "Isaac Newton dies prematurely, preventing his formulation of classical mechanics. The development of physics is delayed for generations.",
+  "image": newtonAppleImg,
+  "category": "science"
   },
   {
     id: "electricity",
     title: "Discovery of Electricity",
     year: 1752,
     description: "Benjamin Franklin's experiments lead to understanding electricity, powering the modern world.",
-    image: "/api/placeholder/400/300",
+    image: electricityImg,
     category: "science"
   }
 ];
@@ -116,28 +117,28 @@ export const alterations: Record<string, Alteration[]> = {
       chaosLevel: 70
     }
   ],
-  "berlin-wall": [
+    "newton-apple": [
     {
-      id: "never-falls",
-      title: "Eternal Division",
-      description: "The Berlin Wall never falls, keeping Germany permanently divided",
-      icon: "🧱",
-      chaosLevel: 80
+    "id": "dies-before",
+    "title": "Premature Death",
+    "description": "Isaac Newton dies before his discoveries, delaying physics for generations.",
+    "icon": "☠️",
+    "chaosLevel": 85
     },
     {
-      id: "earlier-fall",
-      title: "Early Liberation",
-      description: "The Wall falls 10 years earlier, changing the pace of reunification",
-      icon: "🕊️",
-      chaosLevel: 60
+    "id": "never-happened",
+    "title": "No Apple Moment",
+    "description": "The apple incident never occurs, and Newton discovers gravity through other means.",
+    "icon": "🍏",
+    "chaosLevel": 30
     },
     {
-      id: "violent-fall",
-      title: "Revolutionary Uprising",
-      description: "The Wall falls through violent revolution rather than peaceful protest",
-      icon: "⚔️",
-      chaosLevel: 88
-    }
+    "id": "ignored-it",
+    "title": "Dismissed the Apple",
+    "description": "Newton sees the apple fall but finds it unremarkable, delaying key insights.",
+    "icon": "🙄",
+    "chaosLevel": 65
+   }
   ],
   "electricity": [
     {
