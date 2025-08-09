@@ -22,7 +22,7 @@ export const historicalEvents: HistoricalEvent[] = [
     description: "Thomas Edison perfects the incandescent light bulb, illuminating the world.",
     image: lightBulbImg,
     category: "technology",
-    videoUrl1: "/videos/moon-landing.mp4"
+    videoUrl1: "/videos/bulb.mp4"
   },
   {
     id: "printing-press",
@@ -37,7 +37,7 @@ export const historicalEvents: HistoricalEvent[] = [
     id: "newton-apple",
     title: "Newton Dies Before Apple Falls",
     year: 1665,
-    description: "Isaac Newton dies prematurely, preventing his formulation of classical mechanics. The development of physics is delayed for generations.",
+    description: "Isaac Newton observes an apple falling from a tree, inspiring his formulation of gravity and laying the foundation for classical mechanics.",
     image: newtonAppleImg,
     category: "science",
     videoUrl1: "/videos/newton_died.mp4"
@@ -87,7 +87,7 @@ export const alterations: Record<string, Alteration[]> = {
       description: "Edison never perfects the light bulb, leaving the world in darkness",
       icon: "🕯️",
       chaosLevel: 90,
-      videoUrl2: "/videos/bulb.mp4"
+      videoUrl2: "/videos/nolight.mp4"
     },
     {
       id: "different-inventor",
@@ -129,14 +129,14 @@ export const alterations: Record<string, Alteration[]> = {
       description: "The printing press is immediately mass-produced, flooding the world with books",
       icon: "📚",
       chaosLevel: 70,
-      videoUrl2: "/videos/moon-landing.mp4"
+      videoUrl2: "/videos/type.mp4"
     }
   ],
   "newton-apple": [
     {
       id: "dies-before",
       title: "Premature Death",
-      description: "Isaac Newton observes an apple falling from a tree, inspiring his formulation of gravity and laying the foundation for classical mechanics.",
+      description: "Newton dies before the apple incident, never formulating his laws of motion",
       icon: "☠️",
       chaosLevel: 85,
       videoUrl2: "/videos/newton_died.mp4"
@@ -165,7 +165,7 @@ export const alterations: Record<string, Alteration[]> = {
       description: "Electricity remains a mystery, keeping humanity in the pre-electric age",
       icon: "🌑",
       chaosLevel: 98,
-      videoUrl2: "/videos/moon-landing.mp4"
+      videoUrl2: "/videos/mechworlddd.mp4"
     },
     {
       id: "ancient-discovery",
