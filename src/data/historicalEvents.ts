@@ -35,7 +35,7 @@ export const historicalEvents: HistoricalEvent[] = [
   },
   {
     id: "newton-apple",
-    title: "Newton Dies Before Apple Falls",
+    title: "Newton Discovers Gravity",
     year: 1665,
     description: "Isaac Newton observes an apple falling from a tree, inspiring his formulation of gravity and laying the foundation for classical mechanics.",
     image: newtonAppleImg,
