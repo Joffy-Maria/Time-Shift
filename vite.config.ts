@@ -8,6 +8,7 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
+    allowedHosts: ["time-shift.onrender.com"], // 👈 Add this line
   },
   plugins: [
     react(),
