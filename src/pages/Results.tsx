@@ -157,6 +157,7 @@ const Results = () => {
                 </p>
               </div>
             </div>
+            
 
             {/* Original vs Altered */}
             <div className="grid md:grid-cols-2 gap-6">

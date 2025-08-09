@@ -5,6 +5,8 @@ export interface HistoricalEvent {
   description: string;
   image: string;
   category: 'science' | 'politics' | 'culture' | 'technology';
+
+  videoUrl1: string;   // <-- Add this
 }
 
 export interface Alteration {
@@ -13,6 +15,8 @@ export interface Alteration {
   description: string;
   icon: string;
   chaosLevel: number; // 1-100
+
+  videoUrl2: string;   // <-- Add this
 }
 
 export interface AlternateUniverse {

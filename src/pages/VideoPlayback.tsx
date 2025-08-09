@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { historicalEvents, alterations } from "@/data/historicalEvents";
 import { TimeShiftButton } from "@/components/TimeShiftButton";
@@ -13,43 +13,19 @@ const VideoPlayback = () => {
   const [progress, setProgress] = useState(0);
 
   const event = historicalEvents.find(e => e.id === eventId);
-  const alterationData = eventId && alteration ? 
-    alterations[eventId]?.find(a => a.id === alteration) : null;
+  const alterationData = eventId && alteration
+    ? alterations[eventId]?.find(a => a.id === alteration)
+    : null;
+
+  // Ref for video element to control playback manually if needed
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    // Simulate video loading
-    const loadingTimer = setTimeout(() => {
-      setIsLoading(false);
-      setIsPlaying(true);
-    }, 2000);
-
-    return () => clearTimeout(loadingTimer);
-  }, []);
-
-  useEffect(() => {
-    if (isPlaying && !isLoading) {
-      const progressTimer = setInterval(() => {
-        setProgress(prev => {
-          if (prev >= 100) {
-            if (currentVideo === 1) {
-              setCurrentVideo(2);
-              return 0;
-            } else {
-              setIsPlaying(false);
-              // Auto-navigate to results after second video
-              setTimeout(() => {
-                navigate(`/results/${eventId}/${alteration}`);
-              }, 1000);
-              return 100;
-            }
-          }
-          return prev + 2;
-        });
-      }, 100);
-
-      return () => clearInterval(progressTimer);
-    }
-  }, [isPlaying, isLoading, currentVideo, navigate, eventId, alteration]);
+    // Reset progress and loading when switching video
+    setProgress(0);
+    setIsLoading(true);
+    setIsPlaying(false);
+  }, [currentVideo]);
 
   if (!event || !alterationData) {
     return <div>Error: Event or alteration not found</div>;
@@ -57,7 +33,7 @@ const VideoPlayback = () => {
 
   const videoTitles = {
     1: `The Altered ${event.title}`,
-    2: `Future World: ${alterationData.title}`
+    2: `Future World: ${alterationData.title}`,
   };
 
   return (
@@ -83,7 +59,7 @@ const VideoPlayback = () => {
           <div className="bg-card border border-primary/30 rounded-xl overflow-hidden shadow-cosmic">
             {/* Video Area */}
             <div className="aspect-video bg-black relative flex items-center justify-center">
-              {isLoading ? (
+              {isLoading && (
                 <div className="text-center text-foreground">
                   <Loader2 className="w-12 h-12 animate-spin mx-auto mb-4 text-primary" />
                   <p className="text-lg font-heading">Generating Timeline...</p>
@@ -91,27 +67,40 @@ const VideoPlayback = () => {
                     Quantum processors calculating alternate reality
                   </p>
                 </div>
-              ) : (
-                <div className="text-center text-foreground">
-                  <div className="text-8xl mb-4">
-                    {currentVideo === 1 ? '📹' : '🌍'}
-                  </div>
-                  <h3 className="text-2xl font-heading font-bold mb-2 text-primary">
-                    {videoTitles[currentVideo]}
-                  </h3>
-                  <p className="text-muted-foreground">
-                    {currentVideo === 1 ? 
-                      "Showing the altered historical event..." :
-                      "Revealing the resulting future world..."
-                    }
-                  </p>
-                </div>
               )}
 
+              <video
+                key={currentVideo} // reload video on change
+                ref={videoRef}
+                src={currentVideo === 1 ? event.videoUrl1 : alterationData.videoUrl2}
+                className={`w-full h-full object-cover ${isLoading ? "hidden" : "block"}`}
+                controls={true}
+                autoPlay={isPlaying}
+                muted
+                onLoadedData={() => setIsLoading(false)}
+                onEnded={() => {
+                  if (currentVideo === 1) {
+                    setCurrentVideo(2);
+                  } else {
+                    setIsPlaying(false);
+                    setTimeout(() => {
+                      navigate(`/results/${eventId}/${alteration}`);
+                    }, 1000);
+                  }
+                }}
+                onTimeUpdate={(e) => {
+                  const video = e.currentTarget;
+                  if (video.duration > 0) {
+                    const percent = (video.currentTime / video.duration) * 100;
+                    setProgress(percent);
+                  }
+                }}
+              />
+              
               {/* Progress Overlay */}
               {!isLoading && (
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-black/50">
-                  <div 
+                  <div
                     className="h-full bg-primary transition-all duration-100"
                     style={{ width: `${progress}%` }}
                   />
@@ -126,12 +115,14 @@ const VideoPlayback = () => {
                   <TimeShiftButton
                     variant="neon"
                     size="sm"
-                    onClick={() => setIsPlaying(!isPlaying)}
+                    onClick={() => {
+                      if (!isLoading) setIsPlaying(!isPlaying);
+                    }}
                     disabled={isLoading}
                   >
                     {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
                   </TimeShiftButton>
-                  
+
                   <span className="text-sm text-muted-foreground font-mono">
                     Video {currentVideo} of 2
                   </span>
@@ -141,7 +132,7 @@ const VideoPlayback = () => {
                   <span className="text-sm text-muted-foreground">
                     {Math.round(progress)}% Complete
                   </span>
-                  
+
                   <TimeShiftButton
                     variant="ghost"
                     size="sm"
@@ -158,11 +149,19 @@ const VideoPlayback = () => {
           {/* Video Info */}
           <div className="mt-6 text-center">
             <div className="grid grid-cols-2 gap-4 max-w-md mx-auto">
-              <div className={`p-3 rounded-lg border ${currentVideo === 1 ? 'border-primary bg-primary/10' : 'border-border bg-card'}`}>
+              <div
+                className={`p-3 rounded-lg border ${
+                  currentVideo === 1 ? "border-primary bg-primary/10" : "border-border bg-card"
+                }`}
+              >
                 <p className="text-sm font-heading font-bold">Historical Change</p>
                 <p className="text-xs text-muted-foreground mt-1">Timeline alteration</p>
               </div>
-              <div className={`p-3 rounded-lg border ${currentVideo === 2 ? 'border-primary bg-primary/10' : 'border-border bg-card'}`}>
+              <div
+                className={`p-3 rounded-lg border ${
+                  currentVideo === 2 ? "border-primary bg-primary/10" : "border-border bg-card"
+                }`}
+              >
                 <p className="text-sm font-heading font-bold">Future Result</p>
                 <p className="text-xs text-muted-foreground mt-1">Consequence projection</p>
               </div>
